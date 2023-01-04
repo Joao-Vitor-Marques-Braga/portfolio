@@ -1,0 +1,22 @@
+.sobremim{
+    display: flex;
+    font-family: 'Nunito', sans-serif;
+}
+
+.sobremim .minha-descricao {
+    padding-left: 5vh;
+    padding-right: 30vh;
+    padding-top: 27vh;
+}
+
+.sobremim .minha-descricao h3{
+    font-size: 20px;
+}
+
+.minha-imagem img{
+    padding-left: 30vh;
+    padding-top: 15vh;
+    width: 45vh;
+    height: 50vh;
+    padding-bottom: 15vh;
+}

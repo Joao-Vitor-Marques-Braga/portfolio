@@ -1,0 +1,27 @@
+.contato{
+    font-family: 'Nunito', sans-serif;
+    background-color: black;
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.contato ul{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20%;
+}
+
+.contato li{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    list-style-type: none;
+    margin-left: 7rem;
+}
+
+.contato li h3{
+    color: white;
+}
