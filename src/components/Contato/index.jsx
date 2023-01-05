@@ -9,7 +9,7 @@ export const Contato = () => {
             <li>
                 <a href="mailto:joaovitorkge@gmail.com">
                         <img src="https://img.icons8.com/color/96/null/gmail-new.png"/>
-                    <h3>joaovitorkge@gmail.com</h3>
+                   <h3>joaovitorkge@gmail.com</h3> 
                 </a>
             </li>
            

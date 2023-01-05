@@ -71,20 +71,20 @@
     box-shadow: 4px 4px 2px rgba(255, 255, 255, 0.733);
 }
 
-@media(max-width: 400px){
+@media(max-width: 500px){
     .minhas-habilidades h1{
         color: #fff;
         font-size: 4rem;
     }
 }
 
-@media(max-width: 400px){
+@media(max-width: 500px){
     .habilidades{
         flex-direction: column;
     }
 }
 
-@media(max-width: 400px){
+@media(max-width: 500px){
     .card-html{
         width: 80%;
         margin: auto;
@@ -92,7 +92,7 @@
     }
 }
 
-@media(max-width: 400px){
+@media(max-width: 500px){
     .card-css{
         width: 80%;
         margin: auto;
@@ -100,7 +100,7 @@
     }
 }
 
-@media(max-width: 400px){
+@media(max-width: 500px){
     .card-javascript{
         width: 80%;
         margin: auto;
@@ -108,7 +108,7 @@
     }
 }
 
-@media(max-width: 400px){
+@media(max-width: 500px){
     .card-react{
         width: 80%;
         margin: auto;
@@ -116,7 +116,7 @@
     }
 }
 
-@media(max-width: 400px){
+@media(max-width: 500px){
     .card-bootstrap{
         width: 80%;
         margin: auto;
@@ -124,7 +124,7 @@
     }
 }
 
-@media(max-width: 400px){
+@media(max-width: 500px){
     .card-python{
         width: 80%;
         margin: auto;
@@ -132,7 +132,7 @@
     }
 }
 
-@media(max-width: 400px){
+@media(max-width: 500px){
     .card-flask{
         width: 80%;
         margin: auto;
