@@ -21,7 +21,7 @@
 @media(max-width: 500px){
     .minha-imagem img{
         padding-left: 0;
-        padding-top: 25vh;
+        padding-top: 30%;
         padding-bottom: 0%;
         margin: auto;
         width: 35vh;
@@ -35,7 +35,7 @@
         flex-direction: column;
         padding-top: 0;
         margin: auto;
-        margin-bottom: 15vh;
+        margin-bottom: 15%;
     }
 }
 
@@ -43,5 +43,11 @@
     .descricao{
         width: 80%;
         margin: auto;
+    }
+}
+
+@media(max-width: 500px){
+    .descricao h1{
+        font-size: 3rem;
     }
 }
