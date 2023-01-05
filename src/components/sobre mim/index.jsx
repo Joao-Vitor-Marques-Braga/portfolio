@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from '../../images/102833436.jpg'
+import Image from '../../images/minha-foto.jpg'
 import './style.css'
 
 export const SobreMim = () => {
