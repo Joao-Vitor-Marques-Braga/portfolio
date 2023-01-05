@@ -29,14 +29,14 @@
     font-size: 0.8rem;
 }
 
-@media(max-width: 500px){
+@media(max-width: 600px){
     .contato img{
         width: 35%;
         color: white;
     }
 }
 
-@media(max-width: 500px){
+@media(max-width: 600px){
     .contato li h3{
         font-size: 0.5rem;
         justify-content: center;

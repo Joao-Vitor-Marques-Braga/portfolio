@@ -36,6 +36,10 @@ export const MinhasHabilidades = () => {
             <img src="https://img.icons8.com/fluency/240/000000/flask.png"/>
             <h4>Nível: Básico</h4>
           </div>
+          <div className='card-mysql'>
+            <img src="https://img.icons8.com/color/240/null/mysql-logo.png"/>
+            <h4>Nível: Básico</h4>
+          </div>
         </div>
     </div>
   )

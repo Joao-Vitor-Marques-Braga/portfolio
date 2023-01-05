@@ -36,7 +36,7 @@ export const Header = () => {
         {/* nome */}
         <div className='containar-nome'>
             <h1>JOÃO VITOR MARQUES BRAGA</h1>
-            <h3>DESENVOLVEDOR FRONT-END E BACK-END</h3>
+            <h3>DESENVOLVEDOR DE SOFTWARES</h3>
         </div>
             
 
