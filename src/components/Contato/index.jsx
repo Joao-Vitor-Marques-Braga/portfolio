@@ -12,6 +12,7 @@ export const Contato = () => {
                     <h3>joaovitorkge@gmail.com</h3>
                 </a>
             </li>
+           
             <li>
                 <a href="https://www.linkedin.com/in/jo%C3%A3o-vitor-marques-braga-901666257/">
                         <img src="https://img.icons8.com/color/96/null/linkedin.png"/>
