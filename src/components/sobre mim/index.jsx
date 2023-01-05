@@ -7,12 +7,7 @@ export const SobreMim = () => {
     <div className='sobremim'>
         <div className='minha-imagem'>
             <img src={Image} alt="minha imagem"/>
-        </div>
-
-        <div className='minha-descricao'>
-          <h1>
-            Olá, eu sou o João Vitor!
-          </h1>
+            <h1>Olá, eu sou o João Vitor!</h1>
             <h3>
               Tenho 17 anos, iniciante no mundo do desenvolvimento buscando uma grande carreira,
               atualmente cursando Engenharia de Software (Bacharelado) pela Universidade de Rio Verde (UNIRV).
