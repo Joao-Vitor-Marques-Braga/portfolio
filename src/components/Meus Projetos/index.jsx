@@ -6,7 +6,7 @@ import form from '../../images/images-projects/forms.png'
 
 export const MeusProjetos = () => {
   return (
-    <div className='meus-projetos'>
+    <div id='my-projects' className='meus-projetos'>
       <div className='sistema-crud'>   
         <h1>Sistema CRUD</h1>
         <a href="https://joao-vitor-marques-braga.github.io/sistema-CRUD-JavaScript/">

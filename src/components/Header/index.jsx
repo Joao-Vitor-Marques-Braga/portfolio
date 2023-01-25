@@ -6,30 +6,29 @@ export const Header = () => {
   return (
     <div className='header'>
         {/* navbar */}
-           {/*  <nav className='navbar-header'>
+            <nav className='navbar-header'>
                 <ul>
                     <li>
                         <a href="#">Inicio</a>
                     </li>
 
                     <li>
-                        <a href="#">Sobre mim</a>
+                        <a href="#about-me">Sobre mim</a>
                     </li>  
 
                     <li>
-                        <a href="#">Minhas Habilidades </a>
+                        <a href="#my-skills">Minhas Habilidades </a>
                     </li>
 
                     <li>
-                        <a href="#">Meus projetos</a>
+                        <a href="#my-projects">Meus projetos</a>
                     </li>
 
                     <li>
-                        <a href="#">Contato</a>
+                        <a href="#contact">Contato</a>
                     </li>
                 </ul>
             </nav>
-            */}
             <span className='target'></span>
         {/* navbar */}
 

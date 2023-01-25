@@ -4,7 +4,7 @@ import { Carousel } from 'rsuite';
 
 export const MinhasHabilidades = () => {
   return (
-    <div className='minhas-habilidades'>
+    <div id='my-skills' className='minhas-habilidades'>
         <h1>Minhas Habilidades</h1>
 
         <div className='habilidades'>

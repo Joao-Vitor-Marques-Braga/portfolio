@@ -4,7 +4,7 @@ import './style.css'
 
 export const SobreMim = () => {
   return (
-    <div className='sobremim'>
+    <div id='about-me' className='sobremim'>
         <div className='minha-imagem'>
             <img src={Image} alt="minha imagem"/>
           </div>
