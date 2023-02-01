@@ -5,7 +5,7 @@ import './style.css'
 export const Header = () => {
   return (
     <div className='header'>
-        {/* navbar */}
+        {/* navbar 
             <nav className='navbar-header'>
                 <ul>
                     <li>
@@ -23,14 +23,10 @@ export const Header = () => {
                     <li>
                         <a href="#my-projects">Meus projetos</a>
                     </li>
-
-                    <li>
-                        <a href="#contact">Contato</a>
-                    </li>
                 </ul>
             </nav>
             <span className='target'></span>
-        {/* navbar */}
+         navbar */}
 
         {/* nome */}
         <div className='containar-nome'>
