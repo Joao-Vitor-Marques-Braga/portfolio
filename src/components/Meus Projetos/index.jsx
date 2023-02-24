@@ -5,6 +5,7 @@ import cep from  '../../images/images-projects/buscar-cep.png'
 import form from '../../images/images-projects/forms.png'
 import menu from '../../images/images-projects/menu-restaurante.png'
 import vocabulo from '../../images/images-projects/vocabulo.png'
+import cotacao from '../../images/images-projects/cotação.jfif'
 
 export const MeusProjetos = () => {
   return (
@@ -47,6 +48,14 @@ export const MeusProjetos = () => {
           <img src={vocabulo} width='75%' />
         </a>
         <h3>Projeto desenvolvido em React, baseado no jogo forca</h3>
+      </div>
+
+      <div>
+        <h1>Cotação de moedas</h1>
+        <a href="https://cotacao-moedas-mu.vercel.app/">
+          <img src={cotacao} width='75%' />
+        </a>
+        <h3>Projeto desenvolvido em JavaScript, faz a conexão com API que busca os atuais de moedas</h3>
       </div>
     </div>
   )
