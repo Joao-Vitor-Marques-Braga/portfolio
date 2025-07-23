@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary: rgb(124, 58, 237);
+  --primary-light: rgba(124, 58, 237, 0.5);
+  --secondary: rgb(59, 130, 246);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: 'Fredoka', sans-serif;
+}
+
+/* Estilização da barra de rolagem */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Efeito de brilho para elementos */
+.glow-effect {
+  box-shadow: 0 0 15px var(--primary-light);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px var(--primary-light), 0 0 20px rgba(124, 58, 237, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 10px var(--primary-light), 0 0 30px rgba(124, 58, 237, 0.4);
+  }
+}
+
+/* Animação de flutuação para alguns elementos */
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Estilos para textos em gradiente */
+.gradient-text {
+  @apply bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent;
+}

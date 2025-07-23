@@ -10,41 +10,91 @@ import { FaPython } from "react-icons/fa";
 import { FaSass } from "react-icons/fa";
 import { FaJava } from "react-icons/fa";
 
+type TechCardProps = {
+  icon: React.ReactNode;
+  name: string;
+  delay?: number;
+};
+
+function TechCard({ icon, name, delay = 0 }: TechCardProps) {
+  return (
+    <div 
+      className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 p-6 rounded-xl hover:bg-purple-600/10 hover:border-purple-500/30 transition-all duration-300 transform hover:-translate-y-2"
+      data-aos="zoom-in"
+      data-aos-delay={delay}
+    >
+      <div className="flex flex-col items-center">
+        <div className="text-5xl text-purple-500 mb-3">
+          {icon}
+        </div>
+        <span className="text-slate-300 font-medium">{name}</span>
+      </div>
+    </div>
+  );
+}
 
 export function Skills() {
-    return (
-        <div className="w-full max-md:mx-14">
-            <div className="bg-purple-600/30 w-28 h-9 rounded-2xl my-6 md:mx-auto">
-                <p className="py-1.5 px-5 text-purple-500">👨🏻‍💻 Skills</p>
-            </div>
-            <div className="max-ms:grid max-md:grid-cols-3 mx-auto">
-                <div className="max-md:my-3 max-md:my-2 md:text-center md:my-8">
-                    <h1 className="max-md:text-2xl md:text-5xl">Tecnologias e habilidades</h1>
-                </div>
+    const mainTechs = [
+      { icon: <TbBrandReactNative />, name: "React/React Native" },
+      { icon: <RiJavascriptFill />, name: "JavaScript" },
+      { icon: <BiLogoTypescript />, name: "TypeScript" },
+      { icon: <SiTailwindcss />, name: "Tailwind CSS" },
+      { icon: <IoLogoHtml5 />, name: "HTML5" },
+      { icon: <IoLogoCss3 />, name: "CSS3" },
+      { icon: <IoLogoGithub />, name: "GitHub" },
+      { icon: <IoLogoFigma />, name: "Figma" },
+    ];
 
-                <div className="md:text-center md:my-12">
-                    <p className="md:text-2xl">Techs que uso no dia a dia</p>
-                    <div className="flex flex-row justify-center md:text-5xl max-md:justify-center max-md:text-4xl max-md:my-3 md:my-2">
-                        <TbBrandReactNative className="text-purple-600/60 md:mx-1" />
-                        <RiJavascriptFill className="text-purple-600/60 md:mx-1" />
-                        <BiLogoTypescript className="text-purple-600/60 md:mx-1" />
-                        <IoLogoHtml5 className="text-purple-600/60 md:mx-1" />
-                        <IoLogoCss3 className="text-purple-600/60 md:mx-1" />
-                        <SiTailwindcss className="text-purple-600/60 md:mx-1" />
-                        <IoLogoGithub className="text-purple-600/60 md:mx-1" />
-                        <IoLogoFigma className="text-purple-600/60 md:mx-1" />
+    const otherTechs = [
+      { icon: <FaPython />, name: "Python" },
+      { icon: <FaSass />, name: "Sass" },
+      { icon: <FaJava />, name: "Java" },
+    ];
+
+    return (
+        <div className="w-full">
+            <div className="text-center mb-14">
+                <div className="bg-purple-600/30 w-auto inline-block px-5 py-2 rounded-full mb-6">
+                    <p className="text-purple-400 font-medium">👨🏻‍💻 Skills</p>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
+                    Tecnologias e habilidades
+                </h2>
+            </div>
+
+            <div className="space-y-12">
+                <div data-aos="fade-up">
+                    <h3 className="text-xl md:text-2xl font-medium text-center mb-8 text-white">
+                        Techs que uso no dia a dia
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+                        {mainTechs.map((tech, index) => (
+                            <TechCard 
+                                key={tech.name} 
+                                icon={tech.icon} 
+                                name={tech.name} 
+                                delay={index * 50}
+                            />
+                        ))}
                     </div>
                 </div>
 
-                <div className="md:text-center">
-                    <p className="md:text-2xl">Outras Techs que já utilizei em projetos</p>
-                    <div className="flex flex-row justify-center md:text-5xl max-md:justify-center max-md:text-4xl max-md:my-3 md:my-2">
-                        <FaPython className="text-purple-600/60 md:mx-1" />
-                        <FaSass className="text-purple-600/60 md:mx-1" />
-                        <FaJava className="text-purple-600/60 md:mx-1" />
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <h3 className="text-xl md:text-2xl font-medium text-center mb-8 text-white">
+                        Outras Techs que já utilizei em projetos
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto">
+                        {otherTechs.map((tech, index) => (
+                            <TechCard 
+                                key={tech.name} 
+                                icon={tech.icon} 
+                                name={tech.name} 
+                                delay={index * 50}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
