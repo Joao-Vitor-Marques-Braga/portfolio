@@ -6,9 +6,7 @@ import { IoLogoGithub } from "react-icons/io";
 import { IoLogoFigma } from "react-icons/io5";
 import { SiTailwindcss } from "react-icons/si";
 import { IoLogoCss3 } from "react-icons/io";
-import { FaPython } from "react-icons/fa";
-import { FaSass } from "react-icons/fa";
-import { FaJava } from "react-icons/fa";
+import { FaNode, FaPython } from "react-icons/fa";
 
 type TechCardProps = {
   icon: React.ReactNode;
@@ -39,16 +37,12 @@ export function Skills() {
       { icon: <RiJavascriptFill />, name: "JavaScript" },
       { icon: <BiLogoTypescript />, name: "TypeScript" },
       { icon: <SiTailwindcss />, name: "Tailwind CSS" },
+      { icon: <FaPython />, name: "Python" },
+      { icon: <FaNode />, name: "Node.JS" },  
       { icon: <IoLogoHtml5 />, name: "HTML5" },
       { icon: <IoLogoCss3 />, name: "CSS3" },
       { icon: <IoLogoGithub />, name: "GitHub" },
       { icon: <IoLogoFigma />, name: "Figma" },
-    ];
-
-    const otherTechs = [
-      { icon: <FaPython />, name: "Python" },
-      { icon: <FaSass />, name: "Sass" },
-      { icon: <FaJava />, name: "Java" },
     ];
 
     return (
@@ -69,22 +63,6 @@ export function Skills() {
                     </h3>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
                         {mainTechs.map((tech, index) => (
-                            <TechCard 
-                                key={tech.name} 
-                                icon={tech.icon} 
-                                name={tech.name} 
-                                delay={index * 50}
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                <div data-aos="fade-up" data-aos-delay="300">
-                    <h3 className="text-xl md:text-2xl font-medium text-center mb-8 text-white">
-                        Outras Techs que já utilizei em projetos
-                    </h3>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto">
-                        {otherTechs.map((tech, index) => (
                             <TechCard 
                                 key={tech.name} 
                                 icon={tech.icon} 

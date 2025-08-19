@@ -30,7 +30,7 @@ export function AboutMe() {
                 <div className="md:col-span-3 space-y-6" data-aos="fade-left">
                     <div className="space-y-4 text-lg text-slate-300">
                         <p className="text-xl font-medium text-white">👋 Me chamo João Vitor</p>
-                        <p className="leading-relaxed">👨🏻‍💻 Há 3 anos venho estudando desenvolvimento font-end com React.JS, React Native, JavaScript e TypeScript.</p>
+                        <p className="leading-relaxed">👨🏻‍💻 Sou desenvolvedor web, trabalho com React, JavaScript, TypeScript, Node.JS, Python e também tenho conhecimento em desenvolvimento mobile com React Native.</p>
                         <p className="leading-relaxed">🎓 Cursando Engenharia de Software pela UNIRV e técnico em desenvolvimento de sistemas pelo SESI SENAI Rio Verde.</p>
                         <p className="leading-relaxed">💡 Interesse em desenvolvimento de interfaces e aplicações com React JS e React Native.</p>
                         <p className="leading-relaxed">🚀 O melhor dia sempre será o próximo.</p>
