@@ -1,231 +1,198 @@
-import { TbBrandReactNative } from "react-icons/tb";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { useState } from "react";
+import React, { useState } from "react";
+import { 
+  ArrowUpRight, 
+  Sparkles, 
+  ExternalLink
+} from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+import { Project, projectsData } from "../data/projectsData";
 
-import EmbalagensPopular from "../assets/Embalagens-popular.png"
-import Aquagestor from "../assets/Aquagestor.png"
-import PedidosConectados from "../assets/PedidosConectados.png"
-
-type ProjectCardProps = {
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  liveUrl?: string;
-  repoUrl?: string;
-  delay?: number;
-  carouselImages?: string[];
-  onShowCarousel?: () => void;
-};
-
-function ProjectCard({ title, description, image, tags, liveUrl, repoUrl, delay = 0, carouselImages, onShowCarousel }: ProjectCardProps) {
-  return (
-    <div
-      className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl overflow-hidden group hover:border-purple-500/30 transition-all duration-300 transform hover:-translate-y-2"
-      data-aos="fade-up"
-      data-aos-delay={delay}
-    >
-      <div className="relative overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-48 object-cover object-top transition-transform duration-700 group-hover:scale-110"
-        />
-
-        <div className={`absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4`}>
-          <div className="flex space-x-4 mb-2">
-            {carouselImages && onShowCarousel && (
-              <button
-                onClick={onShowCarousel}
-                className="bg-slate-800 hover:bg-purple-600 transition-colors p-2 rounded-full text-white"
-                aria-label="Ver Screenshots"
-              >
-                <FaExternalLinkAlt className="w-5 h-5" />
-              </button>
-            )}
-
-            {repoUrl && (
-              <a
-                href={repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-slate-800 hover:bg-purple-600 transition-colors p-2 rounded-full text-white"
-                aria-label="Ver Repositório"
-              >
-                <FaExternalLinkAlt className="w-5 h-5" />
-              </a>
-            )}
-
-            {liveUrl && !carouselImages && (
-              <a
-                href={liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-slate-800 hover:bg-purple-600 transition-colors p-2 rounded-full text-white"
-                aria-label="Ver Site"
-              >
-                <FaExternalLinkAlt className="w-5 h-5" />
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-        <p className="text-slate-300 mb-4">{description}</p>
-
-        <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              className="bg-purple-600/20 text-purple-400 text-xs px-3 py-1 rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+interface ProjectsProps {
+  onSelectProject: (project: Project) => void;
 }
 
-type ProjectFilterProps = {
-  activeFilter: string;
-  setActiveFilter: (filter: string) => void;
-};
+export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
+  const [activeCategory, setActiveCategory] = useState<string>("all");
 
-function ProjectFilter({ activeFilter, setActiveFilter }: ProjectFilterProps) {
-  return (
-    <div className="flex flex-wrap gap-3 justify-center md:justify-end">
-      <button
-        onClick={() => setActiveFilter('all')}
-        className={`px-4 py-2 rounded-lg border-2 flex items-center gap-2 transition-colors ${activeFilter === 'all'
-          ? 'border-purple-500 bg-purple-600/30 text-white'
-          : 'border-slate-700 hover:border-purple-500 hover:bg-purple-600/10 text-slate-300'
-          }`}
-      >
-        <span>Todos</span>
-      </button>
-
-      <button
-        onClick={() => setActiveFilter('react')}
-        className={`px-4 py-2 rounded-lg border-2 flex items-center gap-2 transition-colors ${activeFilter === 'react'
-          ? 'border-purple-500 bg-purple-600/30 text-white'
-          : 'border-slate-700 hover:border-purple-500 hover:bg-purple-600/10 text-slate-300'
-          }`}
-      >
-        <TbBrandReactNative className="text-purple-400" />
-        <span>React.JS</span>
-      </button>
-
-      <button
-        onClick={() => setActiveFilter('react-native')}
-        className={`px-4 py-2 rounded-lg border-2 flex items-center gap-2 transition-colors ${activeFilter === 'react-native'
-          ? 'border-purple-500 bg-purple-600/30 text-white'
-          : 'border-slate-700 hover:border-purple-500 hover:bg-purple-600/10 text-slate-300'
-          }`}
-      >
-        <TbBrandReactNative className="text-purple-400" />
-        <span>React Native</span>
-      </button>
-    </div>
-  );
-}
-
-type Project = ProjectCardProps & {
-  id: number;
-  category: string;
-};
-
-export function Projects() {
-  const [activeFilter, setActiveFilter] = useState('all');
-
-  const projects: Project[] = [
-    {
-      id: 1,
-      title: "Pedidos Conectados",
-      description: "Um sistema para gerenciamento de pedidos. A solução completa para organizar, monitorar e escalar suas vendas.",
-      image: PedidosConectados,
-      tags: ["React", "Firebase", "Tailwind"],
-      category: "react",
-      liveUrl: "https://pedidos-conectados.vercel.app/"
-    },
-    {
-      id: 2,
-      title: "Embalagens Popular",
-      description: "Este é um site para a embalagens popular que funciona como um catálogo de produtos que podem ser orçados via whatsapp por um link direto, além de ser um sistema institucional que aumenta a visibilidade da empresa por boas práticas de SEO.",
-      image: EmbalagensPopular,
-      tags: ["React", "JavaScript", "Tailwind"],
-      repoUrl: "https://embalagenspopular.com",
-      category: "react"
-    },
-    {
-      id: 3,
-      title: "Aquagestor",
-      description: "Este é um microsaas desenvolvido para lava jatos e estéticas automotivas conseguirem gerenciar seus clientes e serviços de forma eficiente visando um melhor atendimento ao cliente e maior controle sobre seu próprio negócio.",
-      image: Aquagestor,
-      tags: ["React", "Electron", "Node.JS", "SQLite", "Firebase"],
-      repoUrl: "https://aquagestor-rho.vercel.app/",
-      category: "react"
-    }
+  const categories = [
+    { id: "all", label: "Todos os Cases" },
+    { id: "saas", label: "SaaS & Web Apps" },
+    { id: "ecommerce", label: "E-commerce & Catálogos" },
+    { id: "web", label: "Aplicações & Utilitários" },
   ];
 
-  const filteredProjects = activeFilter === 'all'
-    ? projects
-    : projects.filter(project => project.category === activeFilter);
+  const filteredProjects = activeCategory === "all"
+    ? projectsData
+    : projectsData.filter((p) => p.category === activeCategory);
 
   return (
-    <div className="w-full">
-      <div className="text-center mb-12">
-        <div className="bg-purple-600/30 w-auto inline-block px-5 py-2 rounded-full mb-6">
-          <p className="text-purple-400 font-medium">🔗 Projetos</p>
+    <section id="projetos" className="relative py-20 sm:py-28">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="max-w-3xl mx-auto text-center space-y-4 mb-12" data-aos="fade-up">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-semibold text-sky-600 dark:text-sky-400">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Portfólio de Cases Reais</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Projetos Selecionados & <br className="hidden sm:inline" />
+            <span className="text-sky-600 dark:text-sky-400">Soluções em Produção</span>
+          </h2>
+
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            Uma curadoria de produtos digitais, sistemas web e plataformas focadas em conversão, ergonomia de interface e escalabilidade.
+          </p>
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent mb-6">
-          Trabalhos e Projetos
-        </h2>
-        <p className="text-slate-300 max-w-2xl mx-auto">
-          Conheça alguns dos projetos que desenvolvi utilizando diversas tecnologias.
-        </p>
-      </div>
 
-      <div className="mb-10" data-aos="fade-up">
-        <ProjectFilter activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredProjects.map((project, index) => (
-          <ProjectCard
-            key={project.id}
-            title={project.title}
-            description={project.description}
-            image={project.image}
-            tags={project.tags}
-            liveUrl={project.liveUrl}
-            repoUrl={project.repoUrl}
-            delay={index * 100}
-            carouselImages={project.carouselImages}
-          />
-        ))}
-      </div>
-
-      {filteredProjects.length === 0 && (
-        <div className="text-center py-12 text-slate-400" data-aos="fade-up">
-          Nenhum projeto encontrado na categoria selecionada.
+        {/* Category Filters */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-12" data-aos="fade-up" data-aos-delay="100">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                activeCategory === cat.id
+                  ? "bg-slate-900 text-white dark:bg-sky-600 dark:text-white shadow-sm"
+                  : "bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:bg-slate-200 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
         </div>
-      )}
 
-      <div className="text-center mt-12" data-aos="fade-up">
-        <a
-          href="https://github.com/Joao-Vitor-Marques-Braga"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 border border-slate-700"
-        >
-          <FaGithub className="w-5 h-5" />
-          Ver mais projetos no GitHub
-        </a>
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+          {filteredProjects.map((project, idx) => (
+            <div
+              key={project.id}
+              data-aos="fade-up"
+              data-aos-delay={idx * 80}
+              onClick={() => onSelectProject(project)}
+              className="group relative rounded-2xl bg-white dark:bg-[#111a2e] border border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600 transition-all duration-200 hover:-translate-y-1 shadow-sm hover:shadow-md cursor-pointer flex flex-col overflow-hidden"
+            >
+              {/* Visual Preview with Clean Frame */}
+              <div className="relative aspect-[16/10] overflow-hidden bg-slate-100 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
+                <img
+                  src={project.coverImage}
+                  alt={project.title}
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+
+                {/* Status and Category Badges */}
+                <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
+                  <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-white/95 dark:bg-slate-900/90 text-sky-700 dark:text-sky-300 border border-slate-200 dark:border-sky-500/20 shadow-sm">
+                    {project.categoryLabel}
+                  </span>
+                </div>
+
+                <div className="absolute top-3.5 right-3.5">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-medium bg-white/95 dark:bg-slate-950/90 text-emerald-600 dark:text-emerald-400 border border-slate-200 dark:border-emerald-500/20 shadow-sm">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    {project.status}
+                  </span>
+                </div>
+
+                {/* Hover CTA prompt over image */}
+                <div className="absolute inset-0 bg-slate-950/30 dark:bg-slate-950/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                  <span className="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold shadow-lg flex items-center gap-1.5 border border-slate-200 dark:border-slate-700">
+                    Ver detalhes completos do Case
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </div>
+
+              {/* Card Body */}
+              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                      {project.title}
+                    </h3>
+                    <span className="text-xs font-mono text-slate-400">{project.year}</span>
+                  </div>
+
+                  {/* One-Liner Description */}
+                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
+                    {project.oneLiner}
+                  </p>
+                </div>
+
+                {/* Tech Stack Badges */}
+                <div className="space-y-4 pt-2 border-t border-slate-100 dark:border-slate-800">
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.slice(0, 4).map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                    {project.tags.length > 4 && (
+                      <span className="px-2 py-0.5 rounded-md text-xs text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                        +{project.tags.length - 4}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Interactive Trigger Row */}
+                  <div className="flex items-center justify-between pt-1">
+                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-sky-600 dark:text-sky-400 group-hover:underline">
+                      Explorar Arquitetura & Fluxos
+                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </span>
+
+                    <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors border border-slate-200 dark:border-slate-700"
+                          title="Abrir site online em nova aba"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      )}
+                      {project.repoUrl && (
+                        <a
+                          href={project.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors border border-slate-200 dark:border-slate-700"
+                          title="Ver repositório no GitHub"
+                        >
+                          <FaGithub className="w-3.5 h-3.5" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* GitHub External Callout */}
+        <div className="mt-14 text-center" data-aos="fade-up">
+          <a
+            href="https://github.com/Joao-Vitor-Marques-Braga"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-medium text-sm text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors shadow-sm"
+          >
+            <FaGithub className="w-4 h-4" />
+            <span>Explorar outros repositórios de código no GitHub</span>
+            <ArrowUpRight className="w-4 h-4 text-slate-400" />
+          </a>
+        </div>
+
       </div>
-    </div>
+    </section>
   );
-}
+};
